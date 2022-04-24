@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'Advanced' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="settings-list">
+    <ion-item class="with-label">
+      <ion-label>{{'Use Unconfirmed Funds' | translate}}</ion-label>
+      <ion-toggle [(ngModel)]="spendUnconfirmed" (ionChange)="spendUnconfirmedChange()"></ion-toggle>
+    </ion-item>
+    <label-tip class="info" type="info" header="no-header">
+      <div label-tip-body translate>
+        If enabled, wallets will also try to spend unconfirmed funds.
+      </div>
+    </label-tip>
+  </ion-list>
+</ion-content>
