@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'Import Wallet' | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="import()" [disabled]="!importForm.valid">
+        <span translate>Import</span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <div [attr.padding]="isIOS ? '' : null">
+    <ion-segment [(ngModel)]="selectedTab" color="primary" (ionChange)="selectTab(selectedTab)">
+      <ion-segment-button value="words">
+        {{ 'Recovery Phrase' | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="file">
+        {{ 'File/Text' | translate }}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-card *ngIf="importErr" (click)="importErr = false">
+    <ion-item class="assertive">
+      <div translate>Could not access the wallet at the server. Please check:</div>
+      <ul>
+        <li translate>The password of the recovery phrase (if set)</li>
+        <li translate>The derivation path</li>
+        <li translate>The Wallet Service URL</li>
+      </ul>
+      <small>
+        <span translate>NOTE: To import a wallet from a 3rd party software, please go to Add Wallet, Create Wallet, and specify the Recovery Phrase there.</span>
+      </small>
+    </ion-item>
+  </ion-card>
+
+  <form [formGroup]="importForm">
+    <ion-item *ngIf="selectedTab == 'words'">
+      <ion-label stacked>{{'Type the recovery phrase (usually 12 words)' | translate}}</ion-label>
+      <ion-textarea formControlName="words" [value]="importForm.value.words" autocapitalize="none">
+      </ion-textarea>
+      <ion-icon class="scanner-icon" name="qr-scanner" item-right (click)="openScanner()"></ion-icon>
+    </ion-item>
+
+    <div *ngIf="selectedTab == 'file'">
+      <ion-item class="hide-validation" *ngIf="!isSafari && !isCordova">
+        <ion-input class="upload-hidden" type="file" accept="json" [(ngModel)]="formFile" (change)="fileChangeEvent($event)" formControlName="file"></ion-input>
+        <div item-content class="upload-ui">
+          <div class="empty-message">{{'Choose a backup file from your computer' | translate}}&hellip;</div>
+          <div class="filled-message">{{prettyFileName}}</div>
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="isSafari || isCordova">
+        <ion-label floating>{{'Paste the backup plain text code' | translate}}</ion-label>
+        <ion-textarea formControlName="backupText" rows="7" [value]="importForm.value.backupText"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>{{'Password' | translate}}</ion-label>
+        <ion-input type="password" formControlName="filePassword"></ion-input>
+      </ion-item>
+    </div>
+
+    <button ion-button class="button-standard button-secondary" (click)="showAdvOpts = !showAdvOpts">
+      <span *ngIf="!showAdvOpts">{{'Show advanced options' | translate}}</span>
+      <span *ngIf="showAdvOpts">{{'Hide advanced options' | translate}}</span>
+    </button>
+
+    <div *ngIf="showAdvOpts" padding-bottom>
+      <div *ngIf="selectedTab == 'words'">
+        <ion-item class="with-label">
+          <ion-label floating>{{'Password' | translate}}</ion-label>
+          <ion-input type="password" formControlName="passphrase"></ion-input>
+        </ion-item>
+
+        <label-tip type="info" header="no-header">
+          <div label-tip-body translate>
+            This field is only for users who, in previous versions (it's not supported anymore), set a password to protect their recovery phrase. This field is not for your encrypt password.
+          </div>
+        </label-tip>
+      </div>
+    </div>
+  </form>
+</ion-content>

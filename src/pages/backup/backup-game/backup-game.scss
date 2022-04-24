@@ -1,0 +1,88 @@
+page-backup-game {
+  ion-content.content {
+    background: white;
+  }
+  .key-container {
+    height: 95%;
+    text-align: center;
+    @media (max-height: 550px) {
+      align-items: baseline;
+      height: 75%;
+    }
+    .word-container {
+      height: 65%;
+      text-align: center;
+      .word-slides {
+        .word {
+          background-color: #f6f7fc;
+          margin: auto;
+          border-radius: 3px;
+          color: color($colors, secondary);
+          text-align: center;
+          min-width: 190px;
+          min-height: 171px;
+          @media (max-width: 400px) {
+            min-width: 160px;
+            min-height: 130px;
+          }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          span {
+            padding: 2.5rem 4rem 2.5rem 4rem;
+            font-weight: bold;
+            font-size: 35px;
+            letter-spacing: 2.5px;
+            .button {
+              height: 3rem;
+              font-size: 14px;
+            }
+          }
+          .dash-line {
+            border-bottom: 1px color($colors, primary) dashed;
+            width: 80%;
+            position: absolute;
+            bottom: 3.5rem;
+          }
+        }
+        .word-number {
+          margin-top: 1rem;
+          font-weight: bold;
+        }
+      }
+    }
+    .password {
+      padding: 2rem;
+      &-title {
+        margin-bottom: 2rem;
+      }
+      &-text {
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  .bottom-absolute {
+    text-align: center;
+    padding: 0px;
+    bottom: 2rem;
+    .bottom-title {
+      font-size: 16px;
+      margin-bottom: 1rem;
+    }
+    .words {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0.8rem;
+      .button {
+        box-shadow: none;
+        background-color: #f6f6f6;
+        color: color($colors, dark);
+        height: 3rem;
+        font-size: 14px;
+        margin: 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<wide-header-page title="{{'Account Preferences' | translate}}">
+  <div page-content>
+    <ion-list class="settings-list">
+      <ion-item-divider></ion-item-divider>
+      <ion-item>
+        <ion-label>{{'Hide Balance' | translate}}</ion-label>
+        <ion-toggle [(ngModel)]="hiddenBalance" (ionChange)="hiddenBalanceChange()"></ion-toggle>
+      </ion-item>
+
+
+      <button ion-item (click)="openWalletInformation()">
+        <span translate>Information</span>
+      </button>
+      <button ion-item (click)="openWalletAddresses()">
+        <span translate>Addresses</span>
+      </button>
+      <button ion-item (click)="openTransactionHistory()">
+        <span translate>Transaction History</span>
+      </button>
+      <ion-item-divider></ion-item-divider>
+    </ion-list>
+  </div>
+</wide-header-page>

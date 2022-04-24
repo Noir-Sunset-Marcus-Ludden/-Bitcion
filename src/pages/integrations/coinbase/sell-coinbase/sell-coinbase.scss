@@ -1,0 +1,50 @@
+page-sell-coinbase {
+  ion-content {
+    .fixed-content,
+    .scroll-content {
+      margin-bottom: 90px;
+    }
+  }
+  .amount-label {
+    padding-top: 2rem;
+    .amount {
+      font-size: 3.5rem;
+      .unit {
+        font-weight: 400;
+      }
+    }
+    .alternative {
+      margin-top: 1rem;
+      color: color($colors, grey);
+    }
+  }
+  .selling-label {
+    overflow: hidden;
+    font-size: 20px;
+  }
+  .selling-img {
+    float: left;
+    margin-right: 7px;
+    width: 30px;
+  }
+  .wallets-list {
+    .wallet {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      .icon-wallet {
+        margin-right: 0.8rem;
+        width: 25px;
+        height: 25px;
+        box-shadow: none;
+        &.disabled {
+          background-color: color($colors, grey);
+        }
+      }
+    }
+  }
+
+  .last-item {
+    margin-left: auto !important;
+  }
+}

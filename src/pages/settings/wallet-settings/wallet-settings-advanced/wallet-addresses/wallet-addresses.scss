@@ -1,0 +1,53 @@
+page-wallet-addresses {
+  .add-icon {
+    font-size: 1.7rem !important;
+    margin: 0 !important;
+    padding: 20px !important;
+  }
+  .loading {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    span {
+      margin: auto 10px auto 10px;
+    }
+  }
+  .item {
+    .info {
+      color: color($colors, primary) !important;
+      margin-top: 1px;
+    }
+  }
+  .explanation {
+    padding: 16px;
+  }
+  .settings-list {
+    .item {
+      border: 0;
+    }
+
+    ion-item.item,
+    button.item {
+      padding: 12px 0 12px 22px;
+      border-bottom: 0;
+
+      .item-inner {
+        margin-left: 8px;
+
+        ion-note.note {
+          background: #f4f5fb;
+          color: #565d6d;
+          font-weight: 300;
+          padding: 6px 10px;
+          border-radius: 4px;
+        }
+      }
+
+      &:last-child {
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
