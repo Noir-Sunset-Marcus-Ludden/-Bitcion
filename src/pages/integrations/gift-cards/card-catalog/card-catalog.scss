@@ -1,0 +1,12 @@
+card-catalog-page {
+  .settings-list {
+    position: relative;
+    z-index: 0;
+    padding-bottom: 50px;
+
+    ion-item-divider.item {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}
